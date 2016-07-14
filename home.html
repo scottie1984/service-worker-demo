@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Welcome home</title>
+</head>
+<body>
+    <h1>Welcome home</h1>
+    <a href="/" onclick="return page1Click()">Page 1</a>
+    <a href="/" onclick="return page2Click()">Page 2</a>
+
+    <br/><br>
+    <div id="data"></div>
+</body>
+
+<script>
+
+   function renderData(page) {
+      fetch(page)
+          .then(res => res.text())
+          .then(body => document.getElementById("data").innerHTML = body)
+          .catch(e => document.getElementById("data").innerHTML = e.message)
+   }
+
+   function page1Click() {
+        renderData('/page1')
+        return false
+   }
+
+   function page2Click() {
+        renderData('/page2')
+        return false
+   }
+
+    navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+            console.log('ServiceWorker registration successful with scope: ',    registration.scope);
+        }).catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+</script>
+</html>
