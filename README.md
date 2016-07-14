@@ -1,10 +1,12 @@
 # service-worker-demo
 Simple demo for service workers allowing you to work offline
 
-# PreReqs:
+### PreReqs:
 
 * Node v4
 * Chrome v50
+
+### Steps:
 
 * Run Server: node app.js
 * In browser: http://localhost:8080/
